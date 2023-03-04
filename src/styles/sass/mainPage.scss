@@ -1,0 +1,38 @@
+.mainPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .collection {
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    gap: 20px;
+
+    .eachKlei {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      border: 2px solid var(--primary-bg);
+      p {
+        font-size: 24px;
+        padding: 10px;
+        text-align: center;
+      }
+    }
+  }
+}
+.eachSideImage {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid var(--primary-bg);
+  p {
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+  }
+}

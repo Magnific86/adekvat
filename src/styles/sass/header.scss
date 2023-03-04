@@ -1,0 +1,30 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   object-fit: fill;
+  width: 100%;
+  min-height: 180px;
+  nav {
+    display: flex;
+    background: url("../../../public/backgroundLogo.png");
+    justify-content: space-around;
+    // background-size: contain;
+    background-size: cover;
+    align-items: end;
+    width: 100%;
+    min-height: 180px;
+    font-family: "Impact";
+    a {
+      font-size: 30px;
+      text-decoration: none;
+      color: var(--black);
+    }
+    a:hover {
+      color: var(--footer-bg);
+    }
+    .active {
+      color: var(--footer-bg);
+    }
+  }
+}
