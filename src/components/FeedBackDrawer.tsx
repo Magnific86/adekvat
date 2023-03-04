@@ -1,14 +1,16 @@
 import { Drawer } from "antd";
 import { FormEvent, useRef, useState } from "react";
 import { useAppContext } from "../MyContext";
+import { useWindowSize } from "../utils/useWindowsSize";
 
 export const FeedBackDrawer = () => {
   const questRef = useRef<HTMLInputElement>(null);
   const answRef = useRef<HTMLTextAreaElement>(null);
   const categRef = useRef<HTMLSelectElement>(null);
   const errRef = useRef<HTMLSpanElement>(null);
-  const [buttonContent, setButtonContent] = useState("");
+  const [buttonContent, setButtonContent] = useState("post");
   const { openDrawer, handleToggleDrawer } = useAppContext();
+  const { width: w } = useWindowSize();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,7 +55,7 @@ export const FeedBackDrawer = () => {
   return (
     <Drawer
       placement="right"
-      width={800}
+      width={w > 768 ? 800 : 400}
       height={"80%"}
       open={openDrawer}
       onClose={handleToggleDrawer}

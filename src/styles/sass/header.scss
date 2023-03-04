@@ -2,23 +2,37 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  //   object-fit: fill;
   width: 100%;
   min-height: 180px;
-  nav {
+  flex-direction: column;
+  @media screen and (max-width: 576px) {
+    min-height: 100px;
+  }
+
+  .staticNav {
     display: flex;
-    background: url("../../../public/backgroundLogo.png");
     justify-content: space-around;
-    // background-size: contain;
+    background: url("../../../public/backgroundLogo.png");
+    background-color: aqua;
     background-size: cover;
     align-items: end;
     width: 100%;
     min-height: 180px;
     font-family: "Impact";
+    @media screen and (max-width: 576px) {
+      min-height: 100px;
+    }
+
     a {
       font-size: 30px;
       text-decoration: none;
-      color: var(--black);
+      color: var(--white);
+      @media screen and (max-width: 800px) {
+        font-size: 20px;
+      }
+      @media screen and (max-width: 576px) {
+        font-size: 16px;
+      }
     }
     a:hover {
       color: var(--footer-bg);
@@ -26,5 +40,33 @@ header {
     .active {
       color: var(--footer-bg);
     }
+  }
+}
+.stickyNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  background-color: var(--footer-bg);
+  z-index: 100;
+  min-height: 30px;
+
+  a {
+    font-size: 30px;
+    text-decoration: none;
+    color: var(--black);
+    @media screen and (max-width: 800px) {
+      font-size: 20px;
+    }
+    @media screen and (max-width: 576px) {
+      font-size: 16px;
+    }
+  }
+  a:hover {
+    color: var(--white);
+  }
+  .active {
+    color: var(--white);
   }
 }
