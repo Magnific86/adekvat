@@ -3,6 +3,22 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  .banner {
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 240px;
+    background: url("../../../public/backgroundLogo.png");
+    background-size: cover;
+    @media screen and (max-width: 900px) {
+      background-size: contain;
+      height: 120px;
+      background-size: auto;
+    }
+  }
   .collection {
     padding-top: 15px;
     display: grid;

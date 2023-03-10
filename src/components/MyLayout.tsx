@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navCategories } from "../utils/navCategories";
-import { Layout, Menu, Typography } from "antd";
+import { Image, Layout, Menu, Typography } from "antd";
 import {
   LaptopOutlined,
   NotificationOutlined,
@@ -17,6 +17,7 @@ import "swiper/css/navigation";
 import { FreeMode, Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { useWindowSize } from "../utils/useWindowsSize";
+import headerLogo from "../utils/headerLogo.png";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -55,37 +56,30 @@ export const MyLayout: FC = () => {
         </nav>
       )}
       <div className="container">
-        {/* <Sider
-          collapsed={collapse}
-          collapsible
-          collapsedWidth={200}
-          // width={breakpointWidth}
-          onCollapse={() => setCollapse(!collapse)}
-          theme="dark"
-          reverseArrow={true}
-          style={{
-            alignSelf: "self-start",
-            background: "var(--footer-bg)",
-            width: "15%",
-            zIndex: 1000,
-          }}
-        >
-          <h1 style={{ padding: 20, color: "#fff", textAlign: "center" }}>
-            Навигация
-          </h1>
-          <Menu mode="inline" items={siderItems} />
-        </Sider> */}
         <div className="contentWrapper">
           <header ref={ref}>
-            {inView && (
-              <nav className="staticNav">
-                {navCategories.map(({ title, path }) => (
-                  <NavLink key={path} to={path}>
-                    {title}
-                  </NavLink>
-                ))}
-              </nav>
-            )}
+            <div className="upperHeader">
+              <div className="headerLogo">
+                <NavLink to="/">
+                  <Image
+                    preview={false}
+                    src={headerLogo}
+                    width={w > 576 ? 80 : 40}
+                    height={w > 576 ? 60 : 30}
+                    alt="logo"
+                  />
+                </NavLink>
+              </div>
+              {inView && (
+                <nav className="staticNav">
+                  {navCategories.map(({ title, path }) => (
+                    <NavLink key={path} to={path}>
+                      {title}
+                    </NavLink>
+                  ))}
+                </nav>
+              )}
+            </div>
             <Swiper
               slidesPerView={w > 1300 ? 8 : w > 1100 ? 6 : w > 800 ? 4 : 3}
               spaceBetween={30}

@@ -36,18 +36,24 @@ export const MainPage = () => {
 
   return (
     <div className="mainPage">
+      <div className="banner"></div>
       <Swiper
         slidesPerView={w > 1300 ? 5 : w > 900 ? 3 : w < 576 && 2}
         spaceBetween={30}
         freeMode={true}
         navigation={true}
         modules={[FreeMode, Navigation]}
-        className="swiperCategoriesList"
+        className="swiperPhotosList"
       >
         {swiperImages.map((el, index) => (
           <SwiperSlide key={index}>
             <div className="eachSideImage">
-              <Image src={el} width={200} height={200} />
+              <Image
+                style={{ borderRadius: 20 }}
+                src={el}
+                width={w > 576 ? 180 : 100}
+                height={w > 576 ? 180 : 100}
+              />
               <p ref={index === 0 ? ref : null}>картинка {index}</p>
             </div>
           </SwiperSlide>
