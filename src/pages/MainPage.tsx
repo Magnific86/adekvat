@@ -36,7 +36,7 @@ export const MainPage = () => {
 
   return (
     <div className="mainPage">
-      <div className="banner"></div>
+      <div className="banner" />
       <Swiper
         slidesPerView={w > 1300 ? 5 : w > 900 ? 3 : w < 576 && 2}
         spaceBetween={30}

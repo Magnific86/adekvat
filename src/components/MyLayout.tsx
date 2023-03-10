@@ -1,13 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navCategories } from "../utils/navCategories";
-import { Image, Layout, Menu, Typography } from "antd";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-  HomeTwoTone,
-} from "@ant-design/icons";
+import { Image, Layout, Typography } from "antd";
+import { useNavigate } from "react-router-dom";
 import type { MenuProps } from "antd";
 import { siderCetegories } from "../utils/siderItems";
 import { useInView } from "react-intersection-observer";
@@ -18,30 +13,38 @@ import { FreeMode, Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { useWindowSize } from "../utils/useWindowsSize";
 import headerLogo from "../utils/headerLogo.png";
-
-const { Header, Content, Footer, Sider } = Layout;
+import { useAppContext } from "../MyContext";
 
 const siderItems: MenuProps["items"] = siderCetegories.map((el) => {
   return {
-    key: el,
-    label: el,
+    key: el.title,
+    label: el.title,
   };
 });
 
 const { Title, Paragraph: P, Text } = Typography;
 
 export const MyLayout: FC = () => {
+  const { currTopic, setCurrTopic } = useAppContext();
+  console.log("currTopic", currTopic);
+
+  const navigate = useNavigate();
   const { ref, inView } = useInView();
   const { ref: secRef, inView: secInView } = useInView();
   const { width: w } = useWindowSize();
-  // useEffect(() => {
-  //   const prev = document.getElementsByClassName(
-  //     "swiper-button-prev"
-  //   )[2] as HTMLElement;
-  //   secInView
-  //     ? prev.setAttribute("style", "opacity:0")
-  //     : prev.setAttribute("style", "opcity:1");
-  // }, [secInView]);
+  useEffect(() => {
+    const prev = document.getElementsByClassName(
+      "swiper-button-prev"
+    )[0] as HTMLElement;
+    secInView
+      ? prev.setAttribute("style", "opacity:0")
+      : prev.setAttribute("style", "opcity:1");
+  }, [secInView]);
+
+  const handleCurrTopic = (topic: string) => {
+    navigate("/currentTopic");
+    setCurrTopic(topic);
+  };
 
   return (
     <>
@@ -89,12 +92,13 @@ export const MyLayout: FC = () => {
               className="swiperKleiKindsList"
             >
               {siderCetegories.map((el, index) => (
-                <SwiperSlide key={el}>
+                <SwiperSlide key={el.value}>
                   <p
+                    onClick={() => handleCurrTopic(el.value)}
                     ref={index === 0 ? secRef : null}
                     style={{ color: "black" }}
                   >
-                    {el}
+                    {el.title}
                   </p>
                 </SwiperSlide>
               ))}

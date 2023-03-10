@@ -1,14 +1,10 @@
-import {
-  createContext,
-  FC,
-  useState,
-  useContext,
-  ReactNode,
-} from "react";
+import { createContext, FC, useState, useContext, ReactNode } from "react";
 
 interface ContextState {
   openDrawer: boolean;
   handleToggleDrawer: () => void;
+  currTopic: string;
+  setCurrTopic: (state: string) => void;
 }
 
 interface ChildrenProps {
@@ -21,6 +17,7 @@ const AppProvider = MyContext.Provider;
 
 export const MainProvider: FC<ChildrenProps> = ({ children }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [currTopic, setCurrTopic] = useState("");
 
   const handleToggleDrawer = () => {
     setOpenDrawer(openDrawer ? false : true);
@@ -31,6 +28,8 @@ export const MainProvider: FC<ChildrenProps> = ({ children }) => {
       value={{
         openDrawer,
         handleToggleDrawer,
+        currTopic,
+        setCurrTopic,
       }}
     >
       {children}

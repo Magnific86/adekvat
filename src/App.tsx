@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { MyLayout } from "./components/MyLayout";
 import { AllAbout } from "./pages/AllAbout";
 import { Contacts } from "./pages/Contacts";
+import { CurrentTopic } from "./pages/CurrentTopic";
 import { MainPage } from "./pages/MainPage";
 import { NotFound } from "./pages/NotFound";
 import { WhereToBuy } from "./pages/WhereToBuy";
@@ -14,6 +15,7 @@ export const App = () => {
         <Route path="wheretobuy" element={<WhereToBuy />} />
         <Route path="allabout" element={<AllAbout />} />
         <Route path="contacts" element={<Contacts />} />
+        <Route path="currentTopic" element={<CurrentTopic />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
