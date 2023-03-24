@@ -15,7 +15,6 @@ header {
     height: 60px;
     display: flex;
     justify-content: space-between;
-    // align-items: start;
     width: 100%;
     .headerLogo {
       width: 50%;
@@ -28,7 +27,6 @@ header {
       align-items: start;
       width: 50%;
       min-height: 100px;
-      // font-family: "Impact";
       color: #000 !important;
       @media screen and (max-width: 576px) {
         min-height: 100px;

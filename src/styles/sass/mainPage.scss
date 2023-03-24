@@ -14,9 +14,9 @@
     background: url('../../utils/bannerAdekvat.jpg');
     background-size: cover;
     @media screen and (max-width: 900px) {
-      background-size: contain;
+      // background-size: contain;
       height: 120px;
-      background-size: auto;
+      // background-size: auto;
     }
   }
   .collection {
